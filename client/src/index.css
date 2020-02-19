@@ -94,19 +94,19 @@ body {
   background-color: lightseagreen;
 }
 
-.update__form__container {
+.update__form__container, .add__form__container {
   width: 400px;
   /* border: 2px solid rebeccapurple; */
   margin: 0 auto;
   padding: 1em;
 }
 
-.update__form {
+.update__form, .add__form {
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
 }
 
-.update__form input {
+.update__form input, .add__form__input {
   margin-bottom: 1em;
 }
