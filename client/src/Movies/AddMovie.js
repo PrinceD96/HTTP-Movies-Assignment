@@ -41,6 +41,7 @@ const AddMovie = props => {
 
   return (
     <div className="add__form__container">
+      <h2>Add your movie</h2>
       <Form className="add__form" onSubmit={handleSubmit}>
         <Form.Field>
           <label htmlFor="title">Movie Title</label>

@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
 import Loader from "react-loader-spinner";
+import { Button } from "semantic-ui-react";
 
 export default class Movie extends React.Component {
   constructor(props) {
@@ -61,18 +62,18 @@ export default class Movie extends React.Component {
 
     return (
       <div className="save-wrapper" >
-        <MovieCard movie={this.state.movie} />
-        <div className="button__container">
-          <button className="save-button" onClick={this.saveMovie}>
+        <MovieCard movie={this.state.movie} saveMovie={this.saveMovie} updateMovie={this.updateMovie} deleteMovie={this.deleteMovie} />
+        {/* <div className="button__container">
+          <Button color="teal" className="save-button" onClick={this.saveMovie}>
             Save
-          </button>
-          <button className="update-button" onClick={this.updateMovie} >
+          </Button>
+          <Button color="teal" className="update-button" onClick={this.updateMovie} >
             Update
-          </button>
-          <button className="delete-button" onClick={this.deleteMovie} >
+          </Button>
+          <Button color="red" className="delete-button" onClick={this.deleteMovie} >
             Delete
-          </button>
-        </div>
+          </Button>
+        </div> */}
       </div >
     );
   }
