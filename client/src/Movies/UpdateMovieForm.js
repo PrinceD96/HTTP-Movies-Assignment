@@ -43,6 +43,13 @@ const UpdateMovieForm = props => {
       .finally(() => props.history.push(`/movies/${updatedMovie.id}`));
   }
 
+  const cancelUpdate = e => {
+    e.preventDefault()
+    props.history.push(`/movies/${inputs.id}`)
+    console.log("Editing has been cancelled")
+  }
+
+
   return (
     <div className="update__form__container">
       <form className="update__form" onSubmit={handleSubmit}>
@@ -60,7 +67,7 @@ const UpdateMovieForm = props => {
           <input key={index} actor-id={index} type="text" name="stars" value={inputs.stars[index]} onChange={handleChange} />
         ))}
 
-        <button>Cancel</button>
+        <button onClick={cancelUpdate}>Cancel</button>
         <button type="submit">Update</button>
       </form>
     </div>
