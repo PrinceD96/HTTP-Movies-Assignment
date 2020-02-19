@@ -32,9 +32,20 @@ const UpdateMovieForm = props => {
     console.log(e.target.name, inputs[e.target.name])
   }
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    const updatedMovie = inputs;
+
+    axios
+      .put(`http://localhost:5000/api/movies/${updatedMovie.id}`, updatedMovie)
+      .then(res => console.log(`Movie ${updatedMovie.id} has been edited successfully`))
+      .catch(error => console.error(`Error trying to update movie ${updatedMovie.id}`, error))
+      .finally(() => props.history.push(`/movies/${updatedMovie.id}`));
+  }
+
   return (
     <div className="update__form__container">
-      <form className="update__form">
+      <form className="update__form" onSubmit={handleSubmit}>
         <label htmlFor="title">Movie Title</label>
         <input type="text" name="title" id="title" value={inputs.title} onChange={handleChange} />
 
@@ -50,7 +61,7 @@ const UpdateMovieForm = props => {
         ))}
 
         <button>Cancel</button>
-        <button>Update</button>
+        <button type="submit">Update</button>
       </form>
     </div>
   )

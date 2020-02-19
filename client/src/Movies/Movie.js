@@ -32,7 +32,7 @@ export default class Movie extends React.Component {
   };
 
   updateMovie = () => {
-    const updateRoute = this.props.history.push(`/update-movie/${this.state.movie.id}`)
+    this.props.history.push(`/update-movie/${this.state.movie.id}`)
   }
 
   render() {
