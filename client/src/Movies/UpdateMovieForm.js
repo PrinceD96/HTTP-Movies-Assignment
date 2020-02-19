@@ -1,6 +1,7 @@
-import React, { useState, UseEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
-const UpdateMovieForm = () => {
+const UpdateMovieForm = props => {
   const [inputs, setInputs] = useState({
     id: null,
     title: '',
@@ -8,6 +9,13 @@ const UpdateMovieForm = () => {
     metascore: '',
     stars: []
   });
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/movies/${props.match.params.id}`)
+      .then(res => setInputs(res.data))
+      .catch(error => console.error(error))
+  }, [props.match.params.id])
 
   return (
     <div className="update__form__container">
