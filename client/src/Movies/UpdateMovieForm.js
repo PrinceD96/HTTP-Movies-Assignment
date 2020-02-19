@@ -1,10 +1,10 @@
 import React from "react";
 
-const UpdateMovie = () => {
+const UpdateMovieForm = () => {
 
   return (
-    <>
-      <form>
+    <div className="update__form__container">
+      <form className="update__form">
         <input type="text" name="title" />
         <input type="text" name="director" />
         <input type="text" name="metascore" />
@@ -12,8 +12,8 @@ const UpdateMovie = () => {
         <button>Cancel</button>
         <button>Update</button>
       </form>
-    </>
+    </div>
   )
 }
 
-export default UpdateMovie;
+export default UpdateMovieForm;
