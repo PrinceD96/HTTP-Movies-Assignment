@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import { Form, Button, Input, Label } from "semantic-ui-react";
 
 const UpdateMovieForm = props => {
   const [inputs, setInputs] = useState({
@@ -35,6 +36,7 @@ const UpdateMovieForm = props => {
   const handleSubmit = e => {
     e.preventDefault()
     const updatedMovie = inputs;
+    updatedMovie.stars = updatedMovie.stars.filter(star => star !== "")
 
     axios
       .put(`http://localhost:5000/api/movies/${updatedMovie.id}`, updatedMovie)
@@ -52,25 +54,36 @@ const UpdateMovieForm = props => {
 
   return (
     <div className="update__form__container">
-      <form className="update__form" onSubmit={handleSubmit}>
-        <label htmlFor="title">Movie Title</label>
-        <input type="text" name="title" id="title" value={inputs.title} onChange={handleChange} />
+      <Form className="update__form" onSubmit={handleSubmit}>
+        <Form.Field>
+          <label htmlFor="title">Movie Title</label>
+          <Input type="text" name="title" id="title" value={inputs.title} onChange={handleChange} />
+        </Form.Field>
 
-        <label htmlFor="director">Director</label>
-        <input type="text" name="director" id="director" value={inputs.director} onChange={handleChange} />
+        <Form.Field>
+          <label htmlFor="director">Director</label>
+          <Input type="text" name="director" id="director" value={inputs.director} onChange={handleChange} />
+        </Form.Field>
 
-        <label htmlFor="metascore">Metascore</label>
-        <input type="text" name="metascore" id="metascore" value={inputs.metascore} onChange={handleChange} />
+        <Form.Field>
+          <label htmlFor="metascore">Metascore</label>
+          <Input type="text" name="metascore" id="metascore" value={inputs.metascore} onChange={handleChange} />
+        </Form.Field>
 
-        <h2>Actors</h2>
-        {inputs.stars.map((star, index) => (
-          <input key={index} actor-id={index} type="text" name="stars" value={inputs.stars[index]} onChange={handleChange} />
-        ))}
+        <Form.Field>
+          <h3>Actors</h3>
+          {inputs.stars.map((star, index) => (
+            <input key={index} actor-id={index} type="text" name="stars" value={inputs.stars[index]} onChange={handleChange} />
+          ))}
+        </Form.Field>
 
-        <button onClick={cancelUpdate}>Cancel</button>
-        <button type="submit">Update</button>
-      </form>
-    </div>
+        <Button.Group className="button-group">
+          <Button color="red" onClick={cancelUpdate}>Cancel</Button>
+          <Button.Or />
+          <Button color="teal" type="submit">Update</Button>
+        </Button.Group>
+      </Form>
+    </div >
   )
 }
 

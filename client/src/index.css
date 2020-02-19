@@ -1,19 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background-color: #f2f2f2;
+  font-family: "Nunito", cursive, sans-serif;
+  background-color: #EEEEEE;  
+}
+
+a {
+  text-decoration: none;
 }
 
 .movie-card {
-  background-color: #fff;
-  border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
+  width: 80%;
+  box-shadow: 
+      -9px -9px 9px 0 rgba(255, 255, 255, 1),
+      9px 9px 9px 0 rgba(0, 0, 0, .03);
   padding: 1rem;
   cursor: pointer;
   position: relative;
-  margin: 1rem auto;
+  margin: 2rem auto;
+  border-radius: 5px;
 }
 
 .movie-director {
@@ -22,14 +29,15 @@ body {
 }
 
 .saved-list {
-  background-color: #fff;
-  border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+  background-color: #EEEEEE;  
+  box-shadow: 
+      -9px -9px 9px 0 rgba(255, 255, 255, 1),
+      9px 9px 9px 0 rgba(0, 0, 0, .03);
   padding: 1rem;
   cursor: pointer;
   position: relative;
-  margin: 1rem auto;
+  margin: 2rem auto;
   width: 75%;
   display: flex;
   align-items: center;
@@ -48,22 +56,30 @@ body {
   border: 1px solid grey;
   padding: 5px;
 }
-.save-wrapper {
+.save-wrapper {    
   position: relative;
   width: 75%;
   margin: 1rem auto;
+}
+
+.button__container {
+  position: absolute;
+  top: 1px;
+  right: 140px;  
+  padding: 5px 10px;
 }
 .save-button {
   position: absolute;
   top: 25px;
   right: 25px;
-  border: 1px solid grey;
+  border: 1px solid lightseagreen;
   padding: 5px 10px;
   background-color: lightseagreen;
+  border-radius: .2em;
 }
 .save-button:hover, .update-button:hover, .delete-button:hover {
-  background-color: green;
-  color: white;
+  background-color: white;
+  color: lightseagreen;
 }
 
 .home-button, .add-movie-button {
@@ -71,6 +87,13 @@ body {
   padding: 5px 10px;
   background-color: lightskyblue;
   border: 1px solid lightskyblue;
+  border-radius: .2em;
+}
+
+.home-button:hover, .add-movie-button:hover {  
+ color: lightskyblue;
+ background-color: white;
+  
 }
 
 .movie-warning {
@@ -82,33 +105,29 @@ body {
   position: absolute;
   top: 25px;
   right: 95px;
-  border: 1px solid grey;
+  border: 1px solid lightseagreen;
   padding: 5px 10px;
   background-color: lightseagreen;
+  border-radius: .2em;
 }
 
 .delete-button {
   position: absolute;
   top: 25px;
   right: 180px;
-  border: 1px solid grey;
+  border: 1px solid lightseagreen;
   padding: 5px 10px;
   background-color: lightseagreen;
+  border-radius: .2em;
 }
 
 .update__form__container, .add__form__container {
   width: 400px;
-  /* border: 2px solid rebeccapurple; */
   margin: 0 auto;
   padding: 1em;
 }
 
-.update__form, .add__form {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-between;
-}
 
-.update__form input, .add__form__input {
-  margin-bottom: 1em;
-}
+.add__form button, .button-group {
+  width: 100%
+} 

@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+import Loader from "react-loader-spinner";
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,9 @@ export default class Movie extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchMovie(this.props.match.params.id);
+    setTimeout(() => {
+      this.fetchMovie(this.props.match.params.id);
+    }, 1500)
   }
 
   componentWillReceiveProps(newProps) {
@@ -45,22 +49,31 @@ export default class Movie extends React.Component {
 
   render() {
     if (!this.state.movie) {
-      return <div>Loading movie information...</div>;
-    }
+      return (
+        <Loader
+          type="TailSpin"
+          color="#00BFFF"
+          height={50}
+          width={100}
+          timeout={3000}
+          style={{ textAlign: 'center' }} />)
+    };
 
     return (
-      <div className="save-wrapper">
+      <div className="save-wrapper" >
         <MovieCard movie={this.state.movie} />
-        <div className="save-button" onClick={this.saveMovie}>
-          Save
+        <div className="button__container">
+          <button className="save-button" onClick={this.saveMovie}>
+            Save
+          </button>
+          <button className="update-button" onClick={this.updateMovie} >
+            Update
+          </button>
+          <button className="delete-button" onClick={this.deleteMovie} >
+            Delete
+          </button>
         </div>
-        <div className="update-button" onClick={this.updateMovie} >
-          Update
-        </div>
-        <div className="delete-button" onClick={this.deleteMovie} >
-          Delete
-        </div>
-      </div>
+      </div >
     );
   }
 }
