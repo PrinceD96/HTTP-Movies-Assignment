@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
 import Loader from "react-loader-spinner";
-import { Button } from "semantic-ui-react";
 
 export default class Movie extends React.Component {
   constructor(props) {
