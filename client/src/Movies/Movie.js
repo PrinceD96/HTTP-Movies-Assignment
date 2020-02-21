@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+import Loader from "react-loader-spinner";
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,9 @@ export default class Movie extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchMovie(this.props.match.params.id);
+    setTimeout(() => {
+      this.fetchMovie(this.props.match.params.id);
+    }, 1500)
   }
 
   componentWillReceiveProps(newProps) {
@@ -31,18 +35,45 @@ export default class Movie extends React.Component {
     addToSavedList(this.state.movie);
   };
 
+  updateMovie = () => {
+    this.props.history.push(`/update-movie/${this.state.movie.id}`)
+  }
+
+  deleteMovie = () => {
+    axios
+      .delete(`http://localhost:5000/api/movies/${this.state.movie.id}`)
+      .then(res => this.setState({ ...this.state, movie: res.data }))
+      .catch(error => console.log(error))
+      .finally(this.props.history.push("/"))
+  }
+
   render() {
     if (!this.state.movie) {
-      return <div>Loading movie information...</div>;
-    }
+      return (
+        <Loader
+          type="TailSpin"
+          color="#00BFFF"
+          height={50}
+          width={100}
+          timeout={3000}
+          style={{ textAlign: 'center' }} />)
+    };
 
     return (
-      <div className="save-wrapper">
-        <MovieCard movie={this.state.movie} />
-        <div className="save-button" onClick={this.saveMovie}>
-          Save
-        </div>
-      </div>
+      <div className="save-wrapper" >
+        <MovieCard movie={this.state.movie} saveMovie={this.saveMovie} updateMovie={this.updateMovie} deleteMovie={this.deleteMovie} />
+        {/* <div className="button__container">
+          <Button color="teal" className="save-button" onClick={this.saveMovie}>
+            Save
+          </Button>
+          <Button color="teal" className="update-button" onClick={this.updateMovie} >
+            Update
+          </Button>
+          <Button color="red" className="delete-button" onClick={this.deleteMovie} >
+            Delete
+          </Button>
+        </div> */}
+      </div >
     );
   }
 }

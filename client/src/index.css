@@ -1,77 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background-color: #f2f2f2;
+  font-family: "Nunito", cursive, sans-serif;
+  background-color: #EEEEEE;  
+}
+
+a {
+  text-decoration: none;
 }
 
 .movie-card {
-  background-color: #fff;
-  border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
+  width: 100%;  
   padding: 1rem;
   cursor: pointer;
   position: relative;
-  margin: 1rem auto;
-}
+  margin: 2rem auto;
+ }
+
+ .movie-card-header {
+   /* border: 2px solid coral; */
+   display: flex;
+   justify-content: space-between;
+ }
 
 .movie-director {
   padding: 4px 0;
   font-size: 0.8rem;
 }
 
-.saved-list {
-  background-color: #fff;
-  border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
-  padding: 1rem;
-  cursor: pointer;
-  position: relative;
-  margin: 1rem auto;
-  width: 75%;
+.saved__movies__container {
+  /* border: 2px solid coral; */
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }
 
-.saved-list h3 {
-  margin-right: 10px;
+.saved-list {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1rem;
+  cursor: pointer;  
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid grey;
+  margin-bottom: 50px;
+  
+}
+
+.right {
+  width: 220px;
+  /* border: 2px solid coral; */
+  display: flex;
+  justify-content: space-around;
 }
 
 .saved-movie {
   margin: 0 10px;
 }
-.saved-active {
-  color: blue;
+
+/* .saved-active {
   border: 1px solid grey;
   padding: 5px;
-}
-.save-wrapper {
+  margin: 0 10px;  
+} */
+
+.save-wrapper {    
+  /* border: 2px solid red; */
   position: relative;
   width: 75%;
   margin: 1rem auto;
 }
-.save-button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  border: 1px solid grey;
-  padding: 5px 10px;
-  background-color: lightseagreen;
-}
-.save-button:hover {
-  background-color: green;
-  color: white;
+
+.icon__container {
+ display: none;  
 }
 
-.home-button {
+.save-button {
+  /* position: absolute;
+  top: 25px;
+  right: 25px; */
+  border: 1px solid lightseagreen;
   padding: 5px 10px;
-  background-color: lightskyblue;
+  background-color: lightseagreen;
+  border-radius: .2em;
+  cursor: pointer;
+}
+.save-button:hover, .update-button:hover, .delete-button:hover {
+  background-color: white;
+  color: lightseagreen;
+}
+
+.home-button:hover a, .add-movie-button:hover a {  
+   color: white;   
+}
+
+.home-button a, .add-movie-button a {
+  color: white
 }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.update-button {
+  /* position: absolute;
+  top: 25px;
+  right: 95px; */
+  border: 1px solid lightseagreen;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+  border-radius: .2em;
+  cursor: pointer;
+}
+
+.delete-button {
+  /* position: absolute;
+  top: 25px;
+  right: 180px; */
+  border: 1px solid lightseagreen;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+  border-radius: .2em;
+  cursor: pointer;
+}
+
+.update__form__container, .add__form__container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.add__form__container h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.add__form button, .button-group {
+  width: 100%
+} 
+
+@media only screen and (max-width: 1120px) {
+  .movie-card-header {
+    /* border: 2px solid coral; */
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column wrap;
+    align-items: center;
+     }
+
+     .icon__container {
+      display: initial;  
+     }
+
+     .button__container {
+       display: none;
+     }
 }
